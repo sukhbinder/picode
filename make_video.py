@@ -8,6 +8,7 @@ import datetime
 def make_videos():
     now = datetime.datetime.now()
     files=  os.listdir()
+    files.sort(key =os.path.getmtime)
     datestr = now.strftime("%m_%d_%Y_{0}")
     hour = now.hour - 1
     #for hour in range(6, 24):
