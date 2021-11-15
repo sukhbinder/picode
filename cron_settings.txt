@@ -23,3 +23,5 @@
 # m h  dom mon dow   command
 */1 6-23 * * * python3 /home/pi/pcam.py
 7,17 6-23 * * * python3 /home/pi/make_video.py
+33 23 * * * python3 /home/pi/backup_png.py
+
