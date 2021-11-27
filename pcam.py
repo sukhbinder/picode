@@ -10,7 +10,7 @@ def capture_now(camera):
 
 
 now = datetime.now()
-if now.hour >  6 and now.hour < 23:
+if now.hour >=  6 and now.hour < 23:
    camera = PiCamera()
    camera.start_preview()
    sleep(5)

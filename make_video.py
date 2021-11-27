@@ -16,7 +16,12 @@ def make_videos():
     hours = [f for f in files if f.startswith(nowstr)]
     writer = iio.get_writer(r'/home/pi/Desktop/images/v_{}.mp4'.format(nowstr, fps=2))
     for im in hours:
-        writer.append_data(iio.imread(im))
+        try:
+           writer.append_data(iio.imread(im))
+        except Exception as ex:
+           with open("error.txt" "w") as fout:
+                fout.write("ERROR with \n{0}\n{1}".format(im, ex))
+           continue
     writer.close()
 
 def all_till_now():
@@ -28,7 +33,11 @@ def all_till_now():
     fname = r"/home/pi/Desktop/images/v_{}_overval.mp4".format(datestr)
     writer = iio.get_writer(fname, fps=5)
     for im in files:
-        writer.append_data(iio.imread(im))
+        try:
+            writer.append_data(iio.imread(im))
+        except Exception as ex:
+            print(ex)
+            continue
     writer.close()
 
 if __name__ == "__main__":
